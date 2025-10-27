@@ -34,11 +34,21 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
         
-      - name: Build and push Docker image
+      - name: Build and push Ubuntu UV Docker image
         uses: docker/build-push-action@v6
         with:
-          context: .
-          file: ./ubuntu-24.04-uv-0.9.3
+          context: ./ubuntu-24-uv
+          file: ./Dockerfile
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Build and Push Alpine Chromium Novnc
+        uses: docker/build-push-action@v6
+        with:
+          context: ./alpine-chromium-novnc
+          file: ./Dockerfile
           push: true
           platforms: linux/amd64,linux/arm64
           tags: ${{ steps.meta.outputs.tags }}
