@@ -38,7 +38,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./ubuntu-24-uv
-          file: ./Dockerfile
+          file: ./ubuntu-24-uv/Dockerfile
           push: true
           platforms: linux/amd64,linux/arm64
           tags: ${{ steps.meta.outputs.tags }}
@@ -48,7 +48,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./alpine-chromium-novnc
-          file: ./Dockerfile
+          file: ./alpine-chromium-novnc/Dockerfile
           push: true
           platforms: linux/amd64,linux/arm64
           tags: ${{ steps.meta.outputs.tags }}
