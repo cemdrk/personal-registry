@@ -1,0 +1,14 @@
+
+services:
+  app:
+    build: .
+    # stdin_open: true
+    # tty: true
+    ports:
+      - "6080:6080"
+    # volumes:
+    #   - ./src:/app
+    environment:
+      - KVM_ENABLED=true
+    devices:
+      - /dev/kvm:/dev/kvm
